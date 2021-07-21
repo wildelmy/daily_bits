@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(107, 101, 101);
+    color: white;
+    min-height: 100vh;
+}
+nav{
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    padding: 15px 0;
+    background-color: white;
+}
+nav .icon {
+    max-width: 30px;
+    color: black;
+}
+nav .icon img {
+    max-width: 30px;
+}
