@@ -64,9 +64,7 @@ const questions = [
 
 const fillQuestions = () => {
     const questionDescription = document.getElementById('question-description')
-const answersContainer = document.getElementById('answers-container')
-
-    
+    const answersContainer = document.getElementById('answers-container')
 
     questionDescription.innerText = currentQuestion.text
 
