@@ -3,7 +3,7 @@ body {
     color: white;
     min-height: 100vh;
 }
-nav{
+nav {
     position: fixed;
     bottom: 10px;
     width: 100%;
