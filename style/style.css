@@ -21,3 +21,21 @@ nav .icon img {
    
 }
 
+#respuestas {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="radio"] {
+    position: relative;
+    display: none;
+}
+
+
+input[type=radio] + .option {
+    padding: 1px;
+    border-radius: 10px;
+}
+input[type=radio]:checked ~ .option {
+    border: 3px solid paleturquoise;
+}
