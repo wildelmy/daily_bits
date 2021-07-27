@@ -15,7 +15,24 @@
 
 <body>
 
-    <div class="container text-center  pt-3">
+    <section class="container pt-2">
+            <div class="row">
+                <div class="col">
+                    <a href="../../index.html">
+                        <img src="../../multimedia/icon/Property 1=x.svg" alt="">
+                    </a>
+                </div>
+                <div class="col-8 pt-1 px-0">
+                    <div id="progreso" class="progress"></div>
+                </div>
+                <div class="col">
+                    <img src="../../multimedia/icon/Property 1=heart.svg" alt="icon_heart">
+                    <span id="life"></span>
+                </div>
+            </div>
+    </section>
+
+    <div class="container text-center m-3 pt-2">
         <h4>
             ¿Qué tecnologías pertenece al MEVN Stack?
         </h4>
@@ -46,16 +63,19 @@
                 <img src="../../multimedia/selection/kotlin.png" alt="kotlin">
             </label>
         </div>
-        <button onclick="comprobar()">comprobar</button>
     </div>
+    
+    <button onclick="comprobar()">comprobar</button>
 
+    <script src="../../js/comprobarUsuario.js"></script>
     <script>
         function comprobar() {
             let respuesta = $("input[type=radio]:checked").val()
             if (respuesta === 'vue') {
+                alert("Su respuesta es correcta");
 
             } else {
-
+                alert("Su respuesta es incorrecta");
             }
         }
     </script>

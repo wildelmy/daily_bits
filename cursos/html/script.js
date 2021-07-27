@@ -1,8 +1,44 @@
 'use strict'
 
-$(document).ready(function () {
-    jugar();
-})
+const TOTAL_PREGUNTAS = 6;
+
+function escogerPreguntaAleatoria() {
+    let progreso_preguntas =  JSON.parce(window.localStorage.getItem('progreso_preguntas'))
+
+
+    let indice_pregunta = Math.round((Math.random() * TOTAL_PREGUNTAS) + 1)
+    const progreso_preguntas = [indice_pregunta]
+    while(!progreso_preguntas.includes(indice_pregunta)) {
+        indice_pregunta = Math.round((Math.random() * TOTAL_PREGUNTAS) + 1)
+        progreso_preguntas.push(indice_pregunta)
+    } 
+    window.localStorage.setItem('progreso_preguntas', JSON.stringify(progreso_preguntas))
+}
+
+
+function actualizarProgeso() {
+    $('#progreso').html(`
+        <div
+            class="progress-bar"
+            role="progress"
+            style="width: ${juego.progreso}%"
+            aria-valuenow="${juego.progreso}"
+            aria-valuemin="0"
+            aria-valuemax="100">
+        </div>`
+    )
+}
+
+function siguientePreguntaHtml () {
+
+
+
+}
+
+
+// $(document).ready(function () {
+//     jugar();
+// })
 
 const tipos_preguntas = {
     seleccion: "seleccion_multiple",
@@ -47,8 +83,19 @@ let pregunta_aleatoria = {}
 
 
 function jugar() {
-    vida_contenedor.text(juego.vida)
-    actualizarProgeso()
+    // vida_contenedor.text(juego.vida)
+    // actualizarProgeso(()) {
+    //     $('#progreso').html(`
+    //     <div
+    //         class="progress-bar"
+    //         role="progress"
+    //         style="width: ${juego.progreso}%"
+    //         aria-valuenow="${juego.progreso}"
+    //         aria-valuemin="0"
+    //         aria-valuemax="100">
+    //     </div>`
+    // )
+    // }
 
     indice_aleatorio = Math.floor(Math.random() * preguntas.length);
     pregunta_aleatoria = preguntas[indice_aleatorio];
@@ -132,19 +179,4 @@ function comprobar() {
         preguntaSeleccion()
     }
     setTimeout(jugar, 1000)
-}
-
-
-function actualizarProgeso() {
-    juego.progreso += porcentage_avance
-    $('#progreso').html(`
-        <div
-            class="progress-bar"
-            role="progress"
-            style="width: ${juego.progreso}%"
-            aria-valuenow="${juego.progreso}"
-            aria-valuemin="0"
-            aria-valuemax="100">
-        </div>`
-    )
 }
