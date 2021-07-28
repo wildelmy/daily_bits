@@ -24,7 +24,7 @@
     </div>
     <div class="col">
       <img src="../../multimedia/icon/Property 1=heart.svg" alt="icon_heart">
-      <span id="life"></span>
+      <span id="vida"></span>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
       </div>
       <div class="col-6 align-self-lefts ms-2">
         <p class="mt-5 text-left ps-2">
-          pregunta 4
+          ¿Qué etiqueta es semánticamente correcta para el contenido principal?
         </p>
       </div>
     </div>
@@ -81,32 +81,28 @@
 
   <div id="correcta-alerta" class="alert alert-success d-flex flex-column py-3 m-0">
     <span class="mb-3">¡Buen trabajo!</span>
-    <button class="btn btn-info" onclick="continuar()">Continuar</button>
+    <button class="btn btn-info" onclick="escogerPreguntaAleatoria()">Continuar</button>
   </div>
 
   <div id="incorrecta-alerta" class="alert alert-danger d-flex flex-column py-3 m-0">
     <span class="mb-3">La respuesta correcta es: main</span>
-    <button class="btn btn-danger" onclick="continuar()">Continuar</button>
+    <button class="btn btn-danger" onclick="escogerPreguntaAleatoria()">Continuar</button>
   </div>
 
   <script src="../../js/comprobarUsuario.js"></script>
+  <script src="script.js"></script>
   <script>
-    let esCorrecto;
     $('#correcta-alerta').toggleClass('ocultar');
     $('#incorrecta-alerta').toggleClass('ocultar');
     function comprobar() {
       $('#btn-comprobar').toggleClass('ocultar');
       let respuesta = $("input[type=radio]:checked").val();
       if (respuesta === 'main') {
-        esCorrecto = true;
         $('#correcta-alerta').toggleClass('ocultar');
       } else {
-        esCorrecto = false;
         $('#incorrecta-alerta').toggleClass('ocultar');
+        reducirVida();
       }
-    }
-    function continuar() {
-      
     }
   </script>
 </body>

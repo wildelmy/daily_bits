@@ -4,17 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery.js"></script>
   <title>HTML | Daily Bits</title>
 </head>
 <body>
+  <script src="script.js"></script>
   <script>
-    const total_pregntas = 6;
-    const indice_pregunta = Math.round((Math.random() * total_pregntas) + 1)
-    
-    const progreso_preguntas = [indice_pregunta]
-    window.localStorage.setItem('progreso_preguntas', JSON.stringify(progreso_preguntas))
-
-    window.location.href = `./pregunta_${indice_pregunta}.html`
+    escogerPreguntaAleatoria()
   </script>
 </body>
 </html>
