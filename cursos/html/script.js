@@ -25,7 +25,7 @@ function escogerPreguntaAleatoria() {
     }
   } else {
     alert('fin preguntas')
-    window.location.href = '/'
+    window.location.href = './'
     return
   }
 }
