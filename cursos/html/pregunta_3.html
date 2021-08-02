@@ -35,7 +35,7 @@
       </div>
       <div class="col-6 align-self-lefts ms-2">
         <p class="mt-5 text-left ps-2">
-          ¿Qué etiqueta es semánticamente correcta para el contenido principal?
+          ¿Qué significa DRY?
         </p>
       </div>
     </div>
@@ -46,9 +46,9 @@
       <div class="row">
         <div class="col-12 d-flex justify-content-center my-2">
           <span>
-            <input type="radio" id="main" name="option" class="radio" value="main" />
+            <input type="radio" id="main" name="option" class="radio" value="incorrecta" />
             <label for="main" class="option">
-              <span class="span_title">Main</span>
+              <span class="span_title">Don’t repeat yellow</span>
               <img src="../../multimedia/recursos/checkbox.png">
             </label>
           </span>
@@ -56,9 +56,9 @@
 
         <div class="col-12 d-flex justify-content-center my-2">
           <span>
-            <input type="radio" id="section" name="option" class="radio" value="section" />
+            <input type="radio" id="section" name="option" class="radio" value="correcta" />
             <label for="section" class="option">
-              <span class="span_title">Section</span>
+              <span class="span_title">Don’t repeat yourself</span>
               <img src="../../multimedia/recursos/checkbox.png">
             </label>
           </span>
@@ -66,9 +66,9 @@
 
         <div class="col-12 d-flex justify-content-center my-2">
           <span>
-            <input type="radio" id="header" name="option" class="radio" value="header" />
+            <input type="radio" id="header" name="option" class="radio" value="incorrecta" />
             <label for="header" class="option">
-              <span class="span_title">Header</span>
+              <span class="span_title">Don’t recicle year</span>
               <img src="../../multimedia/recursos/checkbox.png">
             </label>
           </span>
@@ -97,7 +97,7 @@
     function comprobar() {
       $('#btn-comprobar').toggleClass('ocultar');
       let respuesta = $("input[type=radio]:checked").val();
-      if (respuesta === 'main') {
+      if (respuesta === 'correcta') {
         $('#correcta-alerta').toggleClass('ocultar');
       } else {
         $('#incorrecta-alerta').toggleClass('ocultar');

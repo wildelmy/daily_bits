@@ -7,30 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
   <link rel="stylesheet" href="../../style/style.css">
-  <script src="http://code.jquery.com/jquery.js"></script>
-  <title>JS | Daily Bits</title>
-
+  <title>HTML | Daily Bits</title>
 </head>
 
 <body>
-
-  <section class="container pt-2">
-    <div class="row">
-      <div class="col">
-        <a href="../../index.html">
-          <img src="../../multimedia/icon/Property 1=x.svg" alt="">
-        </a>
-      </div>
-      <div class="col-8 pt-1 px-0">
-        <div id="progreso" class="progress"></div>
-      </div>
-      <div class="col">
-        <img src="../../multimedia/icon/Property 1=heart.svg" alt="icon_heart">
-        <span id="life"></span>
-      </div>
+  <div class="row p-3">
+    <div class="col">
+      <a href="../../index.html">
+        <img src="../../multimedia/icon/Property 1=x.svg" alt="">
+      </a>
     </div>
-  </section>
+    <div class="col-8 pt-1 px-0">
+      <div id="progreso" class="progress"></div>
+    </div>
+    <div class="col">
+      <img src="../../multimedia/icon/Property 1=heart.svg" alt="icon_heart">
+      <span id="vida"></span>
+    </div>
+  </div>
 
   <div class="container text-center m-3 pt-2">
     <h4>
@@ -64,18 +60,35 @@
       </label>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center mt-5">
+      <button id="btn-comprobar" class="btn btn-info col-10" onclick="comprobar()">Comprobar</button>
+    </div>
+  </div>
 
-  <button onclick="comprobar()">comprobar</button>
+  <div id="correcta-alerta" class="alert alert-success d-flex flex-column py-3 m-0">
+    <span class="mb-3">¡Buen trabajo!</span>
+    <button class="btn btn-info" onclick="escogerPreguntaAleatoria()">Continuar</button>
+  </div>
+
+  <div id="incorrecta-alerta" class="alert alert-danger d-flex flex-column py-3 m-0">
+    <span class="mb-3">La respuesta correcta es: main</span>
+    <button class="btn btn-danger" onclick="escogerPreguntaAleatoria()">Continuar</button>
+  </div>
 
   <script src="../../js/comprobarUsuario.js"></script>
+  <script src="script.js"></script>
   <script>
+    $('#correcta-alerta').toggleClass('ocultar');
+    $('#incorrecta-alerta').toggleClass('ocultar');
     function comprobar() {
+      $('#btn-comprobar').toggleClass('ocultar');
       let respuesta = $("input[type=radio]:checked").val()
       if (respuesta === 'vue') {
-        alert("Su respuesta es correcta");
-
+        $('#correcta-alerta').toggleClass('ocultar');
       } else {
-        alert("Su respuesta es incorrecta");
+        $('#incorrecta-alerta').toggleClass('ocultar');
+        reducirVida();
       }
     }
   </script>
