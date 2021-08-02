@@ -1,6 +1,6 @@
 'use strict'
 
-const TOTAL_PREGUNTAS = 4;
+const TOTAL_PREGUNTAS = 5;
 const porcentaje_avance = 100 / TOTAL_PREGUNTAS
 let juego =  JSON.parse(window.localStorage.getItem('juego'))
 let preguntas_recorridas = juego.progreso_preguntas.length
@@ -8,9 +8,8 @@ let preguntas_recorridas = juego.progreso_preguntas.length
 actualizarProgreso()
 $('#vida').text(juego.vida)
 function escogerPreguntaAleatoria() {
-  console.log(23456)
   let indice_pregunta_aleatoria = Math.floor((Math.random() * TOTAL_PREGUNTAS) + 1)
-
+  
   if (preguntas_recorridas === 0) {
     juego.progreso_preguntas.push(indice_pregunta_aleatoria)
     window.localStorage.setItem('juego', JSON.stringify(juego))
@@ -21,6 +20,8 @@ function escogerPreguntaAleatoria() {
       juego.progreso_preguntas.push(indice_pregunta_aleatoria)
       window.localStorage.setItem('juego', JSON.stringify(juego))
       window.location.href = `./pregunta_${indice_pregunta_aleatoria}.html`
+    } else {
+      escogerPreguntaAleatoria()
     }
   } else {
     alert('fin preguntas')

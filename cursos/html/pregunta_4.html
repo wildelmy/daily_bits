@@ -35,7 +35,7 @@
       </div>
       <div class="col-6 align-self-lefts ms-2">
         <p class="mt-5 text-left ps-2">
-          ¿Qué etiqueta es semánticamente correcta para el contenido principal?
+          Organiza la estructura de un documento HTML5
         </p>
       </div>
     </div>
@@ -43,61 +43,68 @@
 
   <section class="respuestas-posibles mt-3">
     <div class="container">
+      <div id="resultado-contenedor" style="background-color: rgba(231, 231, 231, 0.521); min-width: 200px; min-height: 100px;">
+        
+      </div>
+      <hr>
+      <div id="opciones-contenedor" style="background-color: rgba(231, 231, 231, 0.521); min-width: 200px; min-height: 100px;">
+        <button class="opcion-btn btn btn-light m-1" draggable="true" value="_html">&lt/html&gt</button>
+        <button class="opcion-btn btn btn-light m-1" draggable="true" value="html">&lthtml&gt</button>
+        <button class="opcion-btn btn btn-light m-1" draggable="true" value="head">&lthead&gt &lt/head&gt</button>
+        <button class="opcion-btn btn btn-light m-1" draggable="true" value="DOCTYPE">&lt!DOCTYPE html&gt</button>
+        <button class="opcion-btn btn btn-light m-1" draggable="true" value="body">&ltbody&gt &lt/body&gt</button>
+      </div>
+
       <div class="row">
-        <div class="col-12 d-flex justify-content-center my-2">
-          <span>
-            <input type="radio" id="main" name="option" class="radio" value="main" />
-            <label for="main" class="option">
-              <span class="span_title">Main</span>
-              <img src="../../multimedia/recursos/checkbox.png">
-            </label>
-          </span>
-        </div>
-
-        <div class="col-12 d-flex justify-content-center my-2">
-          <span>
-            <input type="radio" id="section" name="option" class="radio" value="section" />
-            <label for="section" class="option">
-              <span class="span_title">Section</span>
-              <img src="../../multimedia/recursos/checkbox.png">
-            </label>
-          </span>
-        </div>
-
-        <div class="col-12 d-flex justify-content-center my-2">
-          <span>
-            <input type="radio" id="header" name="option" class="radio" value="header" />
-            <label for="header" class="option">
-              <span class="span_title">Header</span>
-              <img src="../../multimedia/recursos/checkbox.png">
-            </label>
-          </span>
-        </div>
         <div class="col-12 d-flex justify-content-center mt-5">
           <button id="btn-comprobar" class="btn btn-info col-10" onclick="comprobar()">Comprobar</button>
         </div>
       </div>
+      
+      <div id="correcta-alerta" class="alert alert-success d-flex flex-column py-3 m-0">
+        <span class="mb-3">¡Buen trabajo!</span>
+        <button class="btn btn-info" onclick="escogerPreguntaAleatoria()">Continuar</button>
+      </div>
+      
+      <div id="incorrecta-alerta" class="alert alert-danger d-flex flex-column py-3 m-0">
+        <span class="mb-3">La respuesta correcta es: main</span>
+        <button class="btn btn-danger" onclick="escogerPreguntaAleatoria()">Continuar</button>
+      </div>
   </section>
-
-  <div id="correcta-alerta" class="alert alert-success d-flex flex-column py-3 m-0">
-    <span class="mb-3">¡Buen trabajo!</span>
-    <button class="btn btn-info" onclick="escogerPreguntaAleatoria()">Continuar</button>
-  </div>
-
-  <div id="incorrecta-alerta" class="alert alert-danger d-flex flex-column py-3 m-0">
-    <span class="mb-3">La respuesta correcta es: main</span>
-    <button class="btn btn-danger" onclick="escogerPreguntaAleatoria()">Continuar</button>
-  </div>
 
   <script src="../../js/comprobarUsuario.js"></script>
   <script src="script.js"></script>
   <script>
     $('#correcta-alerta').toggleClass('ocultar');
     $('#incorrecta-alerta').toggleClass('ocultar');
+     const html_estructura = [
+      'DOCTYPE',
+      'html',
+      'head',
+      'body',
+      '_html'
+    ]
+    let opcionSeleccionada = null
+    $('#resultado-contenedor').on('dragover', (e) => e.preventDefault())
+    $('#resultado-contenedor').on('drop', (e) => e.target.appendChild(opcionSeleccionada))
+
+    $('#opciones-contenedor').on('dragover', (e) => e.preventDefault())
+    $('#opciones-contenedor').on('drop', (e) => e.target.appendChild(opcionSeleccionada))
+
+    $('.opcion-btn').on('dragstart', (e) => opcionSeleccionada = e.target )
+
     function comprobar() {
-      $('#btn-comprobar').toggleClass('ocultar');
-      let respuesta = $("input[type=radio]:checked").val();
-      if (respuesta === 'main') {
+      const opciones = [...document.getElementById('resultado-contenedor').children]
+      if (opciones.length !== 5) {
+        return
+      }
+      let esCorrecto = true
+      opciones.forEach((el, index) => {
+        if (el.value !== html_estructura[index]) {
+          esCorrecto = false
+        }
+      })
+      if (esCorrecto) {
         $('#correcta-alerta').toggleClass('ocultar');
       } else {
         $('#incorrecta-alerta').toggleClass('ocultar');
